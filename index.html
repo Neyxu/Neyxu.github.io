@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pattern Matching</title>
+    <script>
+        function check() {
+            try {
+            var exp = RegExp(String(document.getElementById("pattern").value).slice(1,-1));
+            document.getElementById("result").value = exp.test(document.getElementById("value").value)?
+                                                "Valid" :
+                                                "Invalid";
+            } catch (err){
+                document.getElementById("result").value = err.message;
+            }
+        }
+    </script>
+    
+</head>
+<body>
+    <form>
+        <table>
+            <tr>
+                <td align="right">Pattern:</td>
+                <td>
+                    <input type="text" id="pattern"/>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">Value:</td>
+                <td>
+                    <input type="text" id="value"/>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">Result:</td>
+                <td>
+                    <input type="text" id="result"/>
+                </td>
+                </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="button" value="check" onClick="check()"/>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
