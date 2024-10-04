@@ -5,15 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Webpage</title>
     <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+<style>
+        /* Commented out existing li styles */
+        /* li {
+            /* existing styles */
+        } */
+
+        nav {
+            display: inline-block;
+            width: 80%;
+        }
+
+        nav img {
+            width: 10%;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 40%);
+            justify-content: center; /* Adjust based on the desired layout */
+            align-items: start; /* Adjust as needed */
+            row-gap: 20px; /* Adjust based on the desired spacing */
+        }
+
+        .grid img {
+            width: 100%;
+        }
+
+        .flex {
+            display: flex;
+            flex-wrap: wrap; /* Allows items to wrap to the next line */
+            justify-content: space-between; /* Adjust as needed for spacing */
+            /* Other properties can be added as needed */
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to My Webpage</h1>
-    <p>This is a sample paragraph.</p>
-    <button>Click Me!</button>
-    <div class="container">
-        <div class="item">Item 1</div>
-        <div class="item">Item 2</div>
-        <div class="item">Item 3</div>
-    </div>
+    <a href="#main" class="skip-to-main">Skip to Main Content</a>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <main id="main">
+        <h1>Welcome to Our Website</h1>
+        <section class="grid">
+            <div>
+                <img src="image1.jpg" alt="Description of Image 1">
+                <p>Description for Image 1</p>
+            </div>
+            <div>
+                <img src="image2.jpg" alt="Description of Image 2">
+                <p>Description for Image 2</p>
+            </div>
+            <!-- More grid items -->
+        </section>
+        <section class="flex">
+            <div>
+                <img src="image3.jpg" alt="Description of Image 3">
+                <p>Description for Image 3</p>
+            </div>
+            <div>
+                <img src="image4.jpg" alt="Description of Image 4">
+                <p>Description for Image 4</p>
+            </div>
+            <!-- More flex items -->
+        </section>
+    </main>
 </body>
 </html>
