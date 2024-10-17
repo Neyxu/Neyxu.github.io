@@ -80,6 +80,44 @@
     <img src="https://via.placeholder.com/200" alt="Sample Image 2">
     <img src="https://via.placeholder.com/200" alt="Sample Image 3">
   </div>
+  <script>
+        // JavaScript functions for upDate and undo go here
 
+        function upDate(previewPic) {
+            // Log to confirm the event triggers
+            console.log("Event triggered!");
+
+            // Log the alt and src of the image being hovered
+            console.log("Alt text: " + previewPic.alt);
+            console.log("Source: " + previewPic.src);
+
+            // Change the text of the element with id 'image'
+            let imageElement = document.getElementById('image');
+            imageElement.innerHTML = previewPic.alt;
+
+            // Change the background image of the element with id 'image'
+            imageElement.style.backgroundImage = "url('" + previewPic.src + "')";
+
+            // Check if changes are applied correctly
+            console.log("Background image updated to: " + previewPic.src);
+            console.log("Text updated to: " + previewPic.alt);
+        }
+
+        function undo() {
+            // Log to confirm the undo event triggers
+            console.log("Undo event triggered!");
+
+            // Reset the background image of the element with id 'image'
+            let imageElement = document.getElementById('image');
+            imageElement.style.backgroundImage = "url('')";
+
+            // Reset the text of the element with id 'image'
+            imageElement.innerHTML = "Hover over an image below to display here.";
+
+            // Check if undo operation worked
+            console.log("Background image reset.");
+            console.log("Text reset to default.");
+        }
+  </script>
 </body>
 </html>
