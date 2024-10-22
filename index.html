@@ -87,11 +87,6 @@
       align-items: center;
       z-index: 999;
     }
-
-    /* Hide the gallery when the overlay is active */
-    .gallery.hidden {
-      display: none;
-    }
   </style>
 </head>
 <body>
@@ -118,7 +113,6 @@
     // Function to be called on window load
     function initializeGallery() {
       const images = document.querySelectorAll('.gallery img');
-      const gallery = document.querySelector('.gallery');
       const overlay = document.getElementById('overlay');
 
       // Add event listeners for each image
@@ -145,15 +139,14 @@
           this.style.transform = 'scale(1)';
         });
 
-        // Click event to enlarge and center the image, hiding others
+        // Click event to enlarge and center the image
         image.addEventListener('click', function() {
           if (this.classList.contains('enlarged')) {
             this.classList.remove('enlarged');
             overlay.style.display = 'none';
-            gallery.classList.remove('hidden');
           } else {
-            // Hide other images and display only the enlarged one
-            gallery.classList.add('hidden');
+            // Remove 'enlarged' class from all images to ensure only one is enlarged
+            images.forEach(img => img.classList.remove('enlarged'));
             this.classList.add('enlarged');
             overlay.style.display = 'flex';
           }
@@ -165,7 +158,6 @@
       overlay.addEventListener('click', function() {
         images.forEach(img => img.classList.remove('enlarged'));
         overlay.style.display = 'none';
-        gallery.classList.remove('hidden');
       });
 
       console.log('Gallery initialized.');
