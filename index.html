@@ -64,12 +64,13 @@
 
     .gallery img.enlarged {
       position: absolute;
-      width: 90%;
+      width: auto;
       height: auto;
-      max-height: 90%;
+      max-width: 90vw; /* Maximum width is 90% of the viewport width */
+      max-height: 90vh; /* Maximum height is 90% of the viewport height */
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%) scale(1.5);
+      transform: translate(-50%, -50%) scale(1);
       z-index: 1000;
       box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
     }
