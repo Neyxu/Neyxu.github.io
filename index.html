@@ -5,15 +5,67 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Interactive Photo Gallery</title>
   <style>
-    .gallery img {
-      width: 200px;
-      height: 200px;
-      margin: 10px;
-      transition: transform 0.3s ease;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      color: #333;
+      font-size: 2.5rem;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .gallery img:hover,
     .gallery img:focus {
-      outline: 2px solid blue;
       transform: scale(1.1);
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .gallery img:focus {
+      outline: 2px solid #007BFF;
+    }
+
+    .gallery img:active {
+      transform: scale(1.05);
+      box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Add subtle color change when image loses focus */
+    .gallery img:blur {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      filter: grayscale(10%);
     }
   </style>
 </head>
@@ -22,12 +74,12 @@
   <h1>Interactive Photo Gallery</h1>
   
   <div class="gallery">
-    <img src="image1.jpg" alt="Image description 1" tabindex="0">
-    <img src="image2.jpg" alt="Image description 2" tabindex="0">
-    <img src="image3.jpg" alt="Image description 3" tabindex="0">
-    <img src="image4.jpg" alt="Image description 4" tabindex="0">
-    <img src="image5.jpg" alt="Image description 5" tabindex="0">
-    <img src="image6.jpg" alt="Image description 6" tabindex="0">
+    <img src="image1.jpg" alt="Beautiful mountain landscape" tabindex="0">
+    <img src="image2.jpg" alt="Sunset over the ocean" tabindex="0">
+    <img src="image3.jpg" alt="Forest with sunlight streaming through trees" tabindex="0">
+    <img src="image4.jpg" alt="A calm lake surrounded by trees" tabindex="0">
+    <img src="image5.jpg" alt="Snow-covered mountains under a clear sky" tabindex="0">
+    <img src="image6.jpg" alt="A field of flowers in bloom" tabindex="0">
   </div>
 
   <script>
@@ -53,7 +105,7 @@
           this.style.transform = 'scale(1)';
         });
 
-        // Focus events
+        // Focus events for keyboard accessibility
         image.addEventListener('focus', function() {
           logEvent('focus', this);
           this.style.transform = 'scale(1.1)';
