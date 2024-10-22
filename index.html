@@ -3,121 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Styled Page</title>
+  <title>Interactive Photo Gallery</title>
   <style>
-    /* Navigation bar styling using Flexbox */
-    nav {
-      display: flex;
-      justify-content: space-around;
-      background-color: #333;
-      padding: 1em;
+    .gallery img {
+      width: 200px;
+      height: 200px;
+      margin: 10px;
+      transition: transform 0.3s ease;
     }
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 0.5em 1em;
-    }
-    nav a:hover {
-      background-color: #555;
-      transition: background-color 0.3s ease;
-    }
-
-    /* Styling all images with box model properties */
-    img {
-      border: 5px solid #ccc;
-      padding: 10px;
-      border-radius: 15px;
-      max-width: 100%;
-    }
-
-    /* Using Grid layout for parent container */
-    .grid-container {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      padding: 20px;
-    }
-
-    /* Applying nth-child selector */
-    .grid-container img:nth-child(2n) {
-      border-radius: 50%;
-    }
-
-    /* Flexbox layout for another section */
-    .flex-container {
-      display: flex;
-      justify-content: space-evenly;
-      margin: 20px;
-    }
-    .flex-container img {
-      width: 30%;
+    .gallery img:focus {
+      outline: 2px solid blue;
+      transform: scale(1.1);
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation using Flexbox -->
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">About</a>
-    <a href="#">Services</a>
-    <a href="#">Contact</a>
-  </nav>
-
-  <!-- Image Grid using CSS Grid -->
-  <div class="grid-container">
-    <img src="https://via.placeholder.com/150" alt="Sample Image 1">
-    <img src="https://via.placeholder.com/150" alt="Sample Image 2">
-    <img src="https://via.placeholder.com/150" alt="Sample Image 3">
-    <img src="https://via.placeholder.com/150" alt="Sample Image 4">
-    <img src="https://via.placeholder.com/150" alt="Sample Image 5">
-    <img src="https://via.placeholder.com/150" alt="Sample Image 6">
+  <h1>Interactive Photo Gallery</h1>
+  
+  <div class="gallery">
+    <img src="image1.jpg" alt="Image description 1" tabindex="0">
+    <img src="image2.jpg" alt="Image description 2" tabindex="0">
+    <img src="image3.jpg" alt="Image description 3" tabindex="0">
+    <img src="image4.jpg" alt="Image description 4" tabindex="0">
+    <img src="image5.jpg" alt="Image description 5" tabindex="0">
+    <img src="image6.jpg" alt="Image description 6" tabindex="0">
   </div>
 
-  <!-- Flexbox Layout for Images -->
-  <div class="flex-container">
-    <img src="https://via.placeholder.com/200" alt="Sample Image 1">
-    <img src="https://via.placeholder.com/200" alt="Sample Image 2">
-    <img src="https://via.placeholder.com/200" alt="Sample Image 3">
-  </div>
   <script>
-        // JavaScript functions for upDate and undo go here
+    // Function to log the event triggers
+    function logEvent(eventName, element) {
+      console.log(eventName + " triggered on " + element.alt);
+    }
 
-        function upDate(previewPic) {
-            // Log to confirm the event triggers
-            console.log("Event triggered!");
+    // Function to be called on window load
+    function initializeGallery() {
+      const images = document.querySelectorAll('.gallery img');
 
-            // Log the alt and src of the image being hovered
-            console.log("Alt text: " + previewPic.alt);
-            console.log("Source: " + previewPic.src);
+      // Add event listeners for each image
+      images.forEach((image) => {
+        // Mouse events
+        image.addEventListener('mouseover', function() {
+          logEvent('mouseover', this);
+          this.style.transform = 'scale(1.1)';
+        });
 
-            // Change the text of the element with id 'image'
-            let imageElement = document.getElementById('image');
-            imageElement.innerHTML = previewPic.alt;
+        image.addEventListener('mouseleave', function() {
+          logEvent('mouseleave', this);
+          this.style.transform = 'scale(1)';
+        });
 
-            // Change the background image of the element with id 'image'
-            imageElement.style.backgroundImage = "url('" + previewPic.src + "')";
+        // Focus events
+        image.addEventListener('focus', function() {
+          logEvent('focus', this);
+          this.style.transform = 'scale(1.1)';
+        });
 
-            // Check if changes are applied correctly
-            console.log("Background image updated to: " + previewPic.src);
-            console.log("Text updated to: " + previewPic.alt);
-        }
+        image.addEventListener('blur', function() {
+          logEvent('blur', this);
+          this.style.transform = 'scale(1)';
+        });
+      });
 
-        function undo() {
-            // Log to confirm the undo event triggers
-            console.log("Undo event triggered!");
+      console.log('Gallery initialized.');
+    }
 
-            // Reset the background image of the element with id 'image'
-            let imageElement = document.getElementById('image');
-            imageElement.style.backgroundImage = "url('')";
+    // Add the onload event listener to call the initializeGallery function
+    window.onload = initializeGallery;
 
-            // Reset the text of the element with id 'image'
-            imageElement.innerHTML = "Hover over an image below to display here.";
-
-            // Check if undo operation worked
-            console.log("Background image reset.");
-            console.log("Text reset to default.");
-        }
   </script>
 </body>
 </html>
