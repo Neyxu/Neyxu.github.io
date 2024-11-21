@@ -1,171 +1,248 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interactive Photo Gallery</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-    }
-
-    h1 {
-      margin-bottom: 30px;
-      color: #333;
-      font-size: 2.5rem;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    .gallery img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 8px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-      outline: none;
-    }
-
-    .gallery img:hover,
-    .gallery img:focus {
-      transform: scale(1.1);
-      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    .gallery img:focus {
-      outline: 2px solid #007BFF;
-    }
-
-    .gallery img:active {
-      transform: scale(1.05);
-      box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .gallery img.enlarged {
-      width: 500px;
-      height: 500px;
-      max-width: 80vw; /* Max width is 80% of the viewport */
-      max-height: 80vh; /* Max height is 80% of the viewport */
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(1);
-      z-index: 1000;
-      box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
-      transition: transform 0.5s ease, box-shadow 0.5s ease;
-    }
-
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 999;
-    }
-  </style>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Responsive website</title>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
 </head>
 <body>
+    <nav class="nav">
+        <ul class="nav_list">    
+            <li>
+                <a href="#home" title="Home" class="nav_link">
+                   <i class="ri-home-line"></i>
+                </a>
+            </li> 
 
-  <h1>Interactive Photo Gallery</h1>
-  
-  <div class="gallery">
-    <img src="image1.jpg" alt="Beautiful mountain landscape" tabindex="0">
-    <img src="image2.jpg" alt="Sunset over the ocean" tabindex="0">
-    <img src="image3.jpg" alt="Forest with sunlight streaming through trees" tabindex="0">
-    <img src="image4.jpg" alt="A calm lake surrounded by trees" tabindex="0">
-    <img src="image5.jpg" alt="Snow-covered mountains under a clear sky" tabindex="0">
-    <img src="image6.jpg" alt="A field of flowers in bloom" tabindex="0">
-  </div>
+            <li>
+                <a href="#projects" title="Projects" class="nav_link">
+                   <i class="ri-folder-line"></i>
+                </a>
+            </li>
+            
+            <li>
+                <a href="#services" title="Services" class="nav_link">
+                    <i class="ri-file-edit-line"></i>
+                </a>
+            </li>
 
-  <div class="overlay" id="overlay"></div>
+            <li>
+                <a href="#experience" title="Experience" class="nav_link">
+                    <i class="ri-honour-line"></i>
+                </a>
+            </li>
 
-  <script>
-    // Function to log the event triggers
-    function logEvent(eventName, element) {
-      console.log(eventName + " triggered on " + element.alt);
-    }
+            <li>
+                <a href="#contact" title="Contact" class="nav_link">
+                    <i class="ri-send-plane-line"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    
+    <main class="main">
+        <section class="home section" id="home">
+            <div class="home_container container grid">  
+                <div class="perfil">
+                    <img src="./assets/img/perfilt.jpg" alt="image" class="perfil_img">
+                
+                    <div class="perfil_data">   
+                        <h1 class="perfil_name">Nguyen <br> Huynh</h1>
+                        
+                        <div class="perfil_button">
+                            <a href="#projects" class="button">Projects</a>
+                            <a href="#services" class="button button_black">Services</a>
+                        </div>
+                    </div>
+                </div> 
+               
+                <div class="info">
+                    <div class="info_data">
+                        <div class="info_circle"></div>
+                        <h1 class="info_name">Nguyen Huynh</h1>
+                    </div>
 
-    // Function to be called on window load
-    function initializeGallery() {
-      const images = document.querySelectorAll('.gallery img');
-      const overlay = document.getElementById('overlay');
+                <div class="info_image">
+                    <img src="./assets/img/perfilt.jpg" alt="image" class="info_img">
+                </div>
 
-      // Add event listeners for each image
-      images.forEach((image) => {
-        // Mouse events
-        image.addEventListener('mouseover', function() {
-          logEvent('mouseover', this);
-          this.style.transform = 'scale(1.1)';
-        });
+                <p class="info_description">
+                    Love to design website and
+                    sleeping
+                </p>
 
-        image.addEventListener('mouseleave', function() {
-          logEvent('mouseleave', this);
-          this.style.transform = 'scale(1)';
-        });
+                <a href="./assets/pdf/CV_HuynhTrongNguyen.pdf" download target="_blank" class="button button_black">Download CV</a>
+                </div>
 
-        // Focus events for keyboard accessibility
-        image.addEventListener('focus', function() {
-          logEvent('focus', this);
-          this.style.transform = 'scale(1.1)';
-        });
+                <div class="about">
+                    <h3 class="about_name">
+                        Nguyen Huynh - <b>Web Designer</b>
+                    </h3>
+                    <p class="about_description">
+                        Still studying, but I have complete
+                        severals small projects.
+                    </p>
+                    <div class="about_social">
+                        <a href="" target="_blank" class="about_link">
+                            <i class="ri-linkedin-box-line"></i>
+                        </a>
 
-        image.addEventListener('blur', function() {
-          logEvent('blur', this);
-          this.style.transform = 'scale(1)';
-        });
+                        <a href="" target="_blank" class="about_link">
+                            <i class="ri-github-fill"></i>
+                        </a>
 
-        // Click event to enlarge and center the image
-        image.addEventListener('click', function() {
-          if (this.classList.contains('enlarged')) {
-            this.classList.remove('enlarged');
-            overlay.style.display = 'none';
-          } else {
-            // Remove 'enlarged' class from all images to ensure only one is enlarged
-            images.forEach(img => img.classList.remove('enlarged'));
-            this.classList.add('enlarged');
-            overlay.style.display = 'flex';
-          }
-          logEvent('click', this);
-        });
-      });
+                        <a href="" target="_blank" class="about_link">
+                            <i class="ri-mail-line"></i>
+                        </a>
+                    </div>
 
-      // Close the enlarged image when clicking on the overlay
-      overlay.addEventListener('click', function() {
-        images.forEach(img => img.classList.remove('enlarged'));
-        overlay.style.display = 'none';
-      });
+                    <div class="about_image">
+                        <img src="./assets/img/hmmm.jpg" alt="image" class="about_img">
+                    </div>
 
-      console.log('Gallery initialized.');
-    }
+                    <p class="about_note">
+                        Do not usually using social meadia.
+                        Please contact with an email.
+                    </p>
 
-    // Add the onload event listener to call the initializeGallery function
-    window.onload = initializeGallery;
+                    <a href="#contact" class="button">Contact Me</a>
+                </div>   
+                
+              <div class="skills">
+                    <h2 class="skills_title">Skills</h2>
 
-  </script>
+                    <div class="skills_items">
+                        <img src="./assets/img/javascript-1.svg" alt="image" class="skills_item">
+                        <img src="./assets/img/html5-2.svg" alt="image" class="skills_item">
+                        <img src="./assets/img/css-3.svg" alt="image" class="skills_item">
+                    </div>
+
+                    <p class="skills_description">
+                        Visist the projects sections to 
+                        see some of my projects.
+                    </p>
+              </div>  
+            </div>
+        </section>
+
+        <section class="projects section" id="projects">
+            <h2 class="section_title">RECENT PROJECTS</h2>
+
+                <div class="projects_container container grid">
+                    <article class="projects_card">
+                        <a href="#" class="projects_image">
+                            <img src="" alt="" class="projects_img">
+                        </a>
+
+                        <div class="projects_date">
+                            <h3 class="projects_name"></h3>
+                            <p class="projects_description">
+                                Some small projects of mine.
+                            </p>
+
+                        <a href="#" target="_blank" class="projects_button">
+                            
+                            <span>Visit Projects</span>
+                        </a>
+                        </div>
+                    </article>
+                </div>
+        </section>    
+        <section class="services section" id="services">
+            <h2 class="section_title">SERVICES I OFFER</h2>
+
+            <div class="services_container container grid">
+                <article class="services_card">
+                    <div class="services_icon">
+                        <div class="services_circle"></div>
+                        <i class="ri-pen-nib-line"></i>
+                    </div>
+
+                    <h3 class="services_name">Web Design</h3>
+                    <p class="services_description">
+                        Short description
+                    </p>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="experience sections" id="experience">
+            <h2 class="section_title">EXPERIENCE OR WORK</h2>
+
+            <div class="experience_container container grid">
+                <article class="experience_card">
+                    <h2 class="experience_company"></h2>
+
+                    <div class="experience_data">
+                        <h3 class="experience_profession"></h3>
+                        <span class="experience_date"></span>
+                        <p class="experience_description">
+                            Short description
+                        </p>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="contact section" id="contact">
+            <h2 class="section_title">CONTACT ME</h2>
+
+            <div class="contact__container container grid">
+                <form action="" class="contact__form grid" id="contact-form">
+                    <div class="contact__group grid">
+                        <input type="text" name="user_name" placeholder="Names" required class="contact__input">
+                        <input type="email" name="user_email" placeholder="Email" required class="contact__input">
+                    </div>
+
+                    <textarea name="user_message" placeholder="Message" class="contact__input contact__area"></textarea>
+                   
+                    <button type="submit" class="button contact__button">Send Message</button>
+                
+                    
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container container grid">
+            <div class="footer_content grid">
+                <a href="#" class="footer__logo">Nguyen</a>
+                
+                <ul class="footer__links">
+                    <li>
+                        <a href="#home" class="footer__link">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="#projects" class="footer__link">Projects</a>
+                    </li>
+
+                    <li>
+                        <a href="#services" class="footer__link">Services</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer__social">
+                <a href="" target="_blank" class="footer__social-link">
+                    <i class="ri-facebook-fill"></i>    
+                </a>
+
+                <a href="" target="_blank" class="footer__social-link">
+                    <i class="ri-twitter-fill"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src=""> </script>
+    <script src=""> </script>
+
 </body>
 </html>
